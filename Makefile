@@ -534,6 +534,9 @@ helm-install-without-tls: clean-certs
 helm-uninstall:
 	helm uninstall retina -n kube-system
 
+# Replaces every '.' in $(1) with '\.'
+escape_dot = $(subst .,\.,$(1))
+
 .PHONY: get-certs
 get-certs:
 	mkdir -p $(CERT_DIR)
